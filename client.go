@@ -2,22 +2,22 @@ package main
 
 import (
 	"fmt"
-	"log"
-	"os"
+	//"log"
+	//"os"
 
 	"golang.org/x/crypto/ssh"
 )
 
 func main() {
-	if len(os.Args) != 4 {
-		log.Fatalf("Usage: %s <user> <host:port> <command>", os.Args[0])
-	}
+	//if len(os.Args) != 4 {
+	//	log.Fatalf("Usage: %s <user> <host:port> <command>", os.Args[0])
+	//}
 
-	client, session, err := connectToHost(os.Args[1], os.Args[2])
+	client, session, err := connectToHost("root", "114.55.56.167:22")
 	if err != nil {
 		panic(err)
 	}
-	out, err := session.CombinedOutput(os.Args[3])
+	out, err := session.CombinedOutput("ls /")
 	if err != nil {
 		panic(err)
 	}
